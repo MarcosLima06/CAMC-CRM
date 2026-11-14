@@ -1,0 +1,751 @@
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAMC | Sistema CRM</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <div class="sistema">
+
+        <!-- Menu lateral do CAMC -->
+        <aside class="menu-lateral">
+            <div class="marca">
+                <h1>CAMC<span>.</span></h1>
+                <p>Central de Relacionamento</p>
+            </div>
+
+            <nav aria-label="Menu principal">
+                <a href="#inicio" class="ativo">
+                    Painel Inicial
+                </a>
+
+                <a href="#clientes">
+                    Clientes
+                </a>
+
+                <a href="#atendimentos">
+                    Atendimentos
+                </a>
+
+                <a href="#tickets">
+                    Tickets
+                </a>
+
+                <a href="#canais">
+                    Canais de Comunicação
+                </a>
+
+                <a href="#feedback">
+                    Feedback dos Clientes
+                </a>
+
+                <a href="#relatorios">
+                    Relatórios
+                </a>
+            </nav>
+
+            <div class="rodape-menu">
+                CAMC CRM | Versão 1.0
+            </div>
+        </aside>
+
+        <!-- Área principal -->
+        <main class="conteudo">
+
+            <header class="topo" id="inicio">
+                <div>
+                    <p class="subtitulo">Área de gerenciamento</p>
+                    <h2>Painel de Controle</h2>
+                </div>
+
+                <div class="usuario">
+                    <span class="avatar">C</span>
+                    <span>Administrador CAMC</span>
+                </div>
+            </header>
+
+            <!-- Indicadores do sistema -->
+            <section class="indicadores"
+                     aria-label="Indicadores">
+
+                <article class="indicador">
+                    <p>Clientes cadastrados</p>
+                    <strong id="totalClientes">0</strong>
+                    <span>Base de clientes</span>
+                </article>
+
+                <article class="indicador">
+                    <p>Atendimentos</p>
+                    <strong id="totalAtendimentos">0</strong>
+                    <span>Registros realizados</span>
+                </article>
+
+                <article class="indicador">
+                    <p>Tickets abertos</p>
+                    <strong id="totalTickets">0</strong>
+                    <span>Aguardando resolução</span>
+                </article>
+
+            </section>
+
+            <!-- Cadastro de clientes -->
+            <section class="painel" id="clientes">
+
+                <div class="cabecalho-painel">
+                    <div>
+                        <p class="subtitulo">Gestão de clientes</p>
+                        <h2>Novo Cadastro</h2>
+                    </div>
+                    <span class="identificador">RF01</span>
+                </div>
+
+                <p class="descricao">
+                    Registre as informações dos clientes
+                    para organizar o relacionamento
+                    e facilitar os atendimentos.
+                </p>
+
+                <form id="formCadastro">
+
+                    <div class="grupo-campos">
+                        <div class="campo">
+                            <label for="nome">
+                                Nome completo
+                            </label>
+                            <input type="text"
+                                   id="nome"
+                                   name="nome"
+                                   required>
+                        </div>
+
+                        <div class="campo">
+                            <label for="telefone">
+                                Telefone
+                            </label>
+                            <input type="tel"
+                                   id="telefone"
+                                   name="telefone"
+                                   required>
+                        </div>
+
+                        <div class="campo">
+                            <label for="email">
+                                E-mail
+                            </label>
+                            <input type="email"
+                                   id="email"
+                                   name="email"
+                                   required>
+                        </div>
+
+                        <div class="campo">
+                            <label for="endereco">
+                                Endereço
+                            </label>
+                            <input type="text"
+                                   id="endereco"
+                                   name="endereco"
+                                   required>
+                        </div>
+                    </div>
+
+                    <div class="acoes">
+                        <button type="reset"
+                                class="btn-limpar">
+                            Limpar
+                        </button>
+
+                        <button type="submit"
+                                class="btn-salvar">
+                            Salvar Cliente
+                        </button>
+                    </div>
+
+                </form>
+            </section>
+
+
+<!-- Lista de clientes cadastrados -->
+<section class="painel lista-clientes">
+
+    <div class="cabecalho-painel">
+        <div>
+            <p class="subtitulo">Base de clientes</p>
+            <h2>Clientes Cadastrados</h2>
+        </div>
+    </div>
+
+    <p class="descricao">
+        Consulte os clientes registrados no CAMC.
+    </p>
+
+    <div class="tabela-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>_
+                    <th>Telefone</th>
+                    <th>E-mail</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+
+            <tbody id="listaClientes">
+                <tr>
+                    <td colspan="4">
+                        Nenhum cliente listado.
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</section>
+
+
+
+
+<!-- RF02 - Histórico de Atendimento -->
+<section class="painel painel-atendimentos" id="atendimentos">
+
+    <div class="cabecalho-painel">
+        <div>
+            <p class="subtitulo">Relacionamento com clientes</p>
+            <h2>Registro de Atendimento</h2>
+        </div>
+        <span class="identificador">RF02</span>
+    </div>
+
+    <p class="descricao">
+        Registre os contatos realizados com os clientes
+        e acompanhe o histórico de cada atendimento.
+    </p>
+
+    <form id="formAtendimento">
+
+        <div class="grupo-campos">
+
+            <div class="campo">
+                <label for="clienteAtendimento">
+                    Cliente
+                </label>
+                <select id="clienteAtendimento" required>
+                    <option value="">
+                        Selecione um cliente
+                    </option>
+                </select>
+            </div>
+
+            <div class="campo">
+                <label for="dataAtendimento">
+                    Data do atendimento
+                </label>
+                <input type="date"
+                       id="dataAtendimento"
+                       required>
+            </div>
+
+            <div class="campo">
+                <label for="tipoAtendimento">
+                    Tipo de contato
+                </label>
+                <select id="tipoAtendimento" required>
+                    <option value="">Selecione</option>
+                    <option value="Telefone">Telefone</option>
+                    <option value="E-mail">E-mail</option>
+                    <option value="Presencial">Presencial</option>
+                    <option value="WhatsApp">WhatsApp</option>
+                </select>
+            </div>
+
+            <div class="campo">
+                <label for="statusAtendimento">
+                    Situação
+                </label>
+                <select id="statusAtendimento" required>
+                    <option value="">Selecione</option>
+                    <option value="Aberto">Aberto</option>
+                    <option value="Em andamento">Em andamento</option>
+                    <option value="Finalizado">Finalizado</option>
+                </select>
+            </div>
+
+        </div>
+
+        <div class="campo campo-descricao">
+            <label for="descricaoAtendimento">
+                Descrição do atendimento
+            </label>
+            <textarea id="descricaoAtendimento"
+                      rows="4"
+                      maxlength="500"
+                      required
+                      placeholder="Descreva o atendimento realizado"></textarea>
+        </div>
+
+        <div class="acoes">
+            <button type="reset" class="btn-limpar">
+                Limpar
+            </button>
+            <button type="submit" class="btn-salvar">
+                Registrar Atendimento
+            </button>
+        </div>
+
+    </form>
+</section>
+
+
+
+
+<!-- RF02 - Histórico de atendimentos -->
+<section class="painel painel-historico">
+
+    <div class="cabecalho-painel">
+        <div>
+            <p class="subtitulo">Acompanhamento</p>
+            <h2>Histórico de Atendimentos</h2>
+        </div>
+        <span class="identificador">RF02</span>
+    </div>
+
+    <p class="descricao">
+        Consulte os atendimentos registrados
+        para cada cliente.
+    </p>
+
+    <div class="tabela-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Cliente</th>
+                    <th>Data</th>
+                    <th>Tipo</th>
+                    <th>Situação</th>
+                    <th>Descrição</th>
+                </tr>
+            </thead>
+
+            <tbody id="listaAtendimentos">
+                <tr>
+                    <td colspan="5">
+                        Nenhum atendimento registrado.
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</section>
+
+
+
+
+<!-- RF03 - Gerenciamento de Tickets -->
+<section class="painel painel-tickets" id="tickets">
+
+    <div class="cabecalho-painel">
+        <div>
+            <p class="subtitulo">Central de solicitações</p>
+            <h2>Abertura de Tickets</h2>
+        </div>
+        <span class="identificador">RF03</span>
+    </div>
+
+    <p class="descricao">
+        Registre as solicitações dos clientes
+        e acompanhe o andamento de cada ticket.
+    </p>
+
+    <form id="formTicket">
+
+        <div class="grupo-campos">
+
+            <div class="campo">
+                <label for="clienteTicket">Cliente</label>
+                <select id="clienteTicket" required>
+                    <option value="">Selecione um cliente</option>
+                </select>
+            </div>
+
+            <div class="campo">
+                <label for="tituloTicket">Título da solicitação</label>
+                <input type="text" id="tituloTicket"
+                       maxlength="100" required
+                       placeholder="Ex.: Problema no atendimento">
+            </div>
+
+            <div class="campo">
+                <label for="prioridadeTicket">Prioridade</label>
+                <select id="prioridadeTicket" required>
+                    <option value="">Selecione</option>
+                    <option value="Baixa">Baixa</option>
+                    <option value="Média">Média</option>
+                    <option value="Alta">Alta</option>
+                </select>
+            </div>
+
+            <div class="campo">
+                <label for="situacaoTicket">Situação</label>
+                <select id="situacaoTicket" required>
+                    <option value="">Selecione</option>
+                    <option value="Aberto">Aberto</option>
+                    <option value="Em andamento">Em andamento</option>
+                    <option value="Resolvido">Resolvido</option>
+                </select>
+            </div>
+
+        </div>
+
+        <div class="campo campo-descricao">
+            <label for="descricaoTicket">
+                Descrição da solicitação
+            </label>
+            <textarea id="descricaoTicket"
+                      rows="4"
+                      maxlength="500"
+                      required
+                      placeholder="Descreva a solicitação do cliente"></textarea>
+        </div>
+
+        <div class="acoes">
+            <button type="reset" class="btn-limpar">
+                Limpar
+            </button>
+            <button type="submit" class="btn-salvar">
+                Abrir Ticket
+            </button>
+        </div>
+
+    </form>
+
+
+
+<!-- RF03 - Lista de Tickets -->
+<div class="tabela-container">
+    <h3>Tickets Cadastrados</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Cliente</th>
+                <th>Título</th>
+                <th>Prioridade</th>
+                <th>Situação</th>
+                <th>Descrição</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+
+        <tbody id="listaTickets">
+            <!-- Tickets exibidos pelo JavaScript -->
+        </tbody>
+    </table>
+</div>
+
+</section>
+
+
+<!-- Canais de Comunicação -->
+<section class="painel" id="canais">
+    <h2>Canais de Comunicação</h2>
+    <p>Gerenciamento dos canais de atendimento do CAMC.</p>
+
+
+
+<div class="lista-canais">
+    <button type="button" data-canal="whatsapp">
+        WhatsApp
+    </button>
+
+    <button type="button" data-canal="email">
+        E-mail
+    </button>
+
+    <button type="button" data-canal="telefone">
+        Telefone
+    </button>
+</div>
+
+
+<!-- Formulário de Registro de Contatos -->
+<div class="registro-contatos">
+    <h3>Registrar Contato</h3>
+
+    <form id="formContato">
+        <label for="nomeContato">Nome do Cliente</label>
+        <input type="text" id="nomeContato" required>
+
+        <label for="canalContato">Canal Utilizado</label>
+        <select id="canalContato" required>
+            <option value="">Selecione um canal</option>
+            <option value="WhatsApp">WhatsApp</option>
+            <option value="E-mail">E-mail</option>
+            <option value="Telefone">Telefone</option>
+        </select>
+
+        <label for="descricaoContato">Descrição do Contato</label>
+        <textarea id="descricaoContato" rows="4" required></textarea>
+
+        <button type="submit" class="btn-salvar">
+            Registrar Contato
+        </button>
+    </form>
+
+
+
+<!-- Histórico de Contatos -->
+<div class="historico-contatos">
+    <h3>Histórico de Contatos</h3>
+
+
+<!-- Pesquisa de Contatos -->
+<div class="pesquisa-contatos">
+    <input
+        type="search"
+        id="pesquisarContato"
+        placeholder="Pesquisar cliente pelo nome..."
+        aria-label="Pesquisar contato pelo nome"
+    >
+</div>
+
+
+
+<!-- Filtro por Canal de Comunicação -->
+<div class="filtro-canais">
+    <label for="filtrarCanal">Filtrar por Canal</label>
+
+    <select id="filtrarCanal">
+        <option value="">Todos os canais</option>
+        <option value="WhatsApp">WhatsApp</option>
+        <option value="E-mail">E-mail</option>
+        <option value="Telefone">Telefone</option>
+    </select>
+</div>
+
+
+    <table>
+        <thead>
+            <tr>
+                <th>Cliente</th>
+                <th>Canal</th>
+                <th>Data</th>
+                <th>Descrição</th>
+                <th>Ações</th>
+
+            </tr>
+        </thead>
+
+        <tbody id="listaContatos">
+            <!-- Contatos exibidos pelo JavaScript -->
+        </tbody>
+    </table>
+</div>
+
+</div>
+
+
+</section>
+
+
+
+
+<!-- RF06 - Feedback dos Clientes -->
+<section class="painel" id="feedback">
+
+    <div class="cabecalho-painel">
+        <div>
+            <p class="subtitulo">Avaliação dos serviços</p>
+            <h2>Feedback dos Clientes</h2>
+        </div>
+        <span class="identificador">RF06</span>
+    </div>
+
+    <p class="descricao">
+        Registre as avaliações dos clientes
+        para ajudar na melhoria dos produtos e serviços.
+    </p>
+
+
+
+<!-- Formulário de Feedback -->
+<form id="formFeedback">
+
+    <div class="campo">
+        <label for="clienteFeedback">Cliente</label>
+        <select id="clienteFeedback" required>
+            <option value="">Selecione um cliente</option>
+        </select>
+    </div>
+
+    <div class="campo">
+        <label for="notaFeedback">Nota da Avaliação</label>
+        <select id="notaFeedback" required>
+            <option value="">Selecione uma nota</option>
+            <option value="1">1 - Muito ruim</option>
+            <option value="2">2 - Ruim</option>
+            <option value="3">3 - Regular</option>
+            <option value="4">4 - Bom</option>
+            <option value="5">5 - Excelente</option>
+        </select>
+    </div>
+
+    <div class="campo">
+        <label for="comentarioFeedback">Comentário</label>
+        <textarea id="comentarioFeedback"
+                  rows="4"
+                  placeholder="Digite a avaliação do cliente..."
+                  required></textarea>
+    </div>
+
+    <button type="submit" class="btn-salvar">
+        Registrar Feedback
+    </button>
+
+</form>
+
+
+
+<!-- RF06 - Histórico de Feedbacks -->
+<div class="historico-feedbacks">
+    <h3>Histórico de Feedbacks</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Cliente</th>
+                <th>Nota</th>
+                <th>Comentário</th>
+                <th>Data</th>
+            </tr>
+        </thead>
+
+        <tbody id="listaFeedbacks">
+            <!-- Avaliações exibidas pelo JavaScript -->
+        </tbody>
+    </table>
+</div>
+
+
+
+</section>
+
+<!-- RF07 - HISTÓRICO DE COMPRAS -->
+
+
+
+<section class="painel" id="compras">
+    <h2>Histórico de Compras</h2>
+    <p>Registre as compras realizadas pelos clientes da CAMC.</p>
+
+    <form id="formCompras">
+        <label for="clienteCompra">Cliente:</label>
+        <select id="clienteCompra" required>
+            <option value="">Selecione um cliente</option>
+        </select>
+
+        <label for="produtoCompra">Produto:</label>
+        <select id="produtoCompra" required>
+            <option value="">Selecione um produto</option>
+            <option value="Mel">Mel</option>
+            <option value="Chia">Chia</option>
+            <option value="Barra energética de mel e chia">Barra energética de mel e chia</option>
+        </select>
+
+        <label for="quantidadeCompra">Quantidade:</label>
+        <input type="number" id="quantidadeCompra" min="1" required>
+
+        <label for="valorCompra">Valor total (R$):</label>
+        <input type="number" id="valorCompra" min="0.01" step="0.01" required>
+
+        <button type="submit">Registrar compra</button>
+    </form>
+
+
+
+
+<h3>Compras registradas</h3>
+
+<div class="tabela-responsiva">
+    <table>
+        <thead>
+            <tr>
+                <th>Cliente</th>
+                <th>Produto</th>
+                <th>Quantidade</th>
+                <th>Valor total</th>
+                <th>Data</th>
+            </tr>
+        </thead>
+
+        <tbody id="listaCompras">
+            <!-- Compras exibidas pelo JavaScript -->
+        </tbody>
+    </table>
+</div>
+
+
+</section>
+
+
+
+<!-- RELATÓRIOS DO CAMC-CRM -->
+<section class="painel" id="relatorios">
+    <h2>Relatórios do Sistema</h2>
+    <p>Consulte um resumo das informações registradas no CAMC-CRM.</p>
+
+    
+<div id="resumoRelatorios">
+    <h3>Resumo Geral</h3>
+
+    <p>Clientes cadastrados:
+        <strong id="relatorioClientes">0</strong>
+    </p>
+
+    <p>Atendimentos registrados:
+        <strong id="relatorioAtendimentos">0</strong>
+    </p>
+
+    <p>Tickets cadastrados:
+        <strong id="relatorioTickets">0</strong>
+    </p>
+
+    <p>Compras registradas:
+        <strong id="relatorioCompras">0</strong>
+    </p>
+
+    <p>Valor total das compras:
+        <strong id="relatorioValor">R$ 0,00</strong>
+    </p>
+</div>
+
+
+<!-- Botão para imprimir os relatórios -->
+<button type="button" id="btnImprimirRelatorio">
+    Imprimir Relatório
+</button>
+
+
+        
+    </div>
+</section>
+
+
+
+
+            <footer class="rodape">
+                CAMC CRM — Gestão inteligente
+                de relacionamento
+            </footer>
+
+        </main>
+    </div>
+
+</body>
+</html>

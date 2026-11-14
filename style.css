@@ -1,0 +1,721 @@
+
+
+/* Estilo geral do CAMC */
+
+:root {
+    --azul: #17324d;
+    --turquesa: #17a398;
+    --fundo: #f2f5f8;
+    --branco: #ffffff;
+    --texto: #263746;
+    --cinza: #718096;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: var(--fundo);
+    color: var(--texto);
+}
+
+.sistema {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Menu lateral */
+
+.menu-lateral {
+    width: 245px;
+    background: var(--azul);
+    color: var(--branco);
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.marca h1 {
+    margin: 0;
+    font-size: 32px;
+}
+
+.marca h1 span {
+    color: var(--turquesa);
+}
+
+.marca p {
+    font-size: 12px;
+    color: #b5c5d5;
+}
+
+nav {
+    margin-top: 45px;
+}
+
+nav a {
+    display: block;
+    padding: 14px;
+    margin-bottom: 10px;
+    color: #dce6ef;
+    text-decoration: none;
+    border-radius: 8px;
+}
+
+nav a:hover,
+nav a.ativo {
+    background: var(--turquesa);
+    color: white;
+}
+
+.rodape-menu {
+    margin-top: auto;
+    padding-top: 30px;
+    font-size: 12px;
+    color: #b5c5d5;
+}
+
+/* Conteúdo principal */
+
+.conteudo {
+    flex: 1;
+    min-width: 0;
+    padding: 35px;
+}
+
+.topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.subtitulo {
+    color: var(--turquesa);
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.topo h2 {
+    margin: 5px 0;
+    font-size: 27px;
+}
+
+.usuario {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+}
+
+.avatar {
+    background: var(--azul);
+    color: white;
+    padding: 12px 15px;
+    border-radius: 50%;
+}
+
+/* Indicadores */
+
+.indicadores {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.indicador {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    border-left: 4px solid var(--turquesa);
+    box-shadow: 0 3px 12px #0000000a;
+}
+
+.indicador p {
+    margin-top: 0;
+    color: var(--cinza);
+}
+
+.indicador strong {
+    display: block;
+    font-size: 32px;
+    color: var(--azul);
+    margin-bottom: 10px;
+}
+
+.indicador span {
+    font-size: 12px;
+    color: var(--cinza);
+}
+
+/* Painel de cadastro */
+
+.painel {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px #0000000a;
+}
+
+.cabecalho-painel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cabecalho-painel h2 {
+    margin-top: 5px;
+}
+
+.identificador {
+    background: #e3f6f3;
+    color: #087d73;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+.descricao {
+    color: var(--cinza);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* Formulário */
+
+.grupo-campos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 25px;
+}
+
+.campo label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.campo input {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #d5dfe7;
+    border-radius: 7px;
+    font-size: 14px;
+}
+
+.campo input:focus {
+    outline: 2px solid var(--turquesa);
+    border-color: transparent;
+}
+
+.acoes {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 30px;
+}
+
+button {
+    padding: 13px 22px;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-limpar {
+    background: #e8edf2;
+    color: var(--texto);
+}
+
+.btn-salvar {
+    background: var(--turquesa);
+    color: white;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+.rodape {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 12px;
+    color: var(--cinza);
+}
+
+/* Adaptação para celulares */
+
+@media (max-width: 800px) {
+    .sistema {
+        flex-direction: column;
+    }
+
+    .menu-lateral {
+        width: 100%;
+    }
+
+    nav {
+        margin-top: 20px;
+    }
+
+    .conteudo {
+        padding: 20px;
+    }
+
+    .topo {
+        flex-wrap: wrap;
+    }
+
+    .indicadores {
+        grid-template-columns: 1fr;
+    }
+
+    .grupo-campos {
+        grid-template-columns: 1fr;
+    }
+
+    .painel {
+        padding: 20px;
+    }
+}
+
+
+
+/* Tabela de clientes do CAMC */
+
+.lista-clientes {
+    margin-top: 30px;
+}
+
+.tabela-container {
+    width: 100%;
+    overflow-x: auto;
+    margin-top: 25px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+thead {
+    background: #edf5f5;
+}
+
+th {
+    padding: 15px;
+    text-align: left;
+    color: var(--azul);
+}
+
+td {
+    padding: 15px;
+    border-bottom: 1px solid #e5eaf0;
+}
+
+tbody tr:hover {
+    background: #f7fafc;
+}
+
+.btn-editar {
+    background: #e3f6f3;
+    color: #087d73;
+    padding: 8px 12px;
+}
+
+.btn-excluir {
+    background: #fde8e8;
+    color: #b42318;
+    padding: 8px 12px;
+}
+
+
+
+/* Espaçamento entre os botões da tabela */
+
+.btn-editar {
+    margin-right: 8px;
+}
+
+
+
+/* Estilo do histórico de atendimento */
+
+.painel-atendimentos {
+    margin-top: 30px;
+}
+
+.campo select,
+.campo textarea {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #d5dfe7;
+    border-radius: 7px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    background: white;
+    color: var(--texto);
+}
+
+.campo select:focus,
+.campo textarea:focus {
+    outline: 2px solid var(--turquesa);
+    border-color: transparent;
+}
+
+.campo-descricao {
+    margin-top: 20px;
+}
+
+.campo textarea {
+    resize: vertical;
+    min-height: 110px;
+}
+
+
+
+/* Canais de Comunicação do CAMC */
+
+.lista-canais {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.lista-canais button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    background-color: #2563eb;
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.lista-canais button:hover {
+    background-color: #1e40af;
+    transform: translateY(-2px);
+}
+
+
+
+/* RF04 - Formulário de Registro de Contatos */
+
+.registro-contatos {
+    margin-top: 25px;
+}
+
+.registro-contatos h3 {
+    margin-bottom: 20px;
+    color: #193653;
+}
+
+#formContato {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#formContato label {
+    font-weight: 600;
+    color: #193653;
+}
+
+#formContato input,
+#formContato select,
+#formContato textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+#formContato textarea {
+    resize: vertical;
+}
+
+#formContato button {
+    align-self: flex-start;
+    margin-top: 10px;
+}
+
+
+
+
+/* RF04 - Botão Excluir Contato */
+
+.btn-excluir {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-excluir:hover {
+    background-color: #b02a37;
+    transform: translateY(-2px);
+}
+
+
+
+/* RF04 - Pesquisa de Contatos */
+
+.pesquisa-contatos {
+    margin: 20px 0;
+}
+
+#pesquisarContato {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 14px;
+    box-sizing: border-box;
+    outline: none;
+}
+
+#pesquisarContato:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+
+
+/* RF04 - Filtro por Canal de Comunicação */
+
+.filtro-canais {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.filtro-canais label {
+    font-weight: 600;
+    color: #193653;
+}
+
+#filtrarCanal {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 14px;
+    background-color: white;
+    cursor: pointer;
+}
+
+#filtrarCanal:focus {
+    outline: none;
+    border-color: #2563eb;
+}
+
+
+
+/* RF07 - Histórico de Compras */
+
+#compras form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 20px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+#compras label {
+    grid-column: 1 / -1;
+    font-weight: 600;
+    color: #17324d;
+}
+
+#compras input,
+#compras select {
+    grid-column: 1 / -1;
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccd6dd;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+#compras button {
+    grid-column: 1 / -1;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background-color: #17324d;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#compras button:hover {
+    background-color: #245477;
+}
+
+
+
+/* RF07 - Tabela do histórico de compras */
+
+#compras h3 {
+    margin-top: 25px;
+    margin-bottom: 15px;
+    color: #17324d;
+}
+
+#compras .tabela-responsiva {
+    width: 100%;
+    overflow-x: auto;
+}
+
+#compras table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#compras th {
+    background-color: #eaf2f3;
+    color: #17324d;
+    padding: 14px;
+    text-align: left;
+}
+
+#compras td {
+    padding: 14px;
+    border-bottom: 1px solid #e1e7eb;
+}
+
+#compras tbody tr:hover {
+    background-color: #f5f9fa;
+}
+
+@media (max-width: 600px) {
+    #compras th,
+    #compras td {
+        padding: 10px;
+        font-size: 13px;
+    }
+}
+
+
+
+/* CAMC-CRM - Estilo dos Relatórios */
+
+#relatorios #resumoRelatorios {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px;
+    margin-top: 25px;
+}
+
+#relatorios #resumoRelatorios h3 {
+    grid-column: 1 / -1;
+    color: #17324d;
+    margin-bottom: 5px;
+}
+
+#relatorios #resumoRelatorios p {
+    background-color: #f3f7f9;
+    border-left: 4px solid #16a39a;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 0;
+    color: #17324d;
+    line-height: 1.7;
+}
+
+#relatorios #resumoRelatorios strong {
+    display: block;
+    font-size: 26px;
+    margin-top: 8px;
+    color: #159c94;
+}
+
+@media (max-width: 600px) {
+    #relatorios #resumoRelatorios {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
+
+
+
+/* CAMC-CRM - Impressão do relatório */
+
+@media print {
+    @page {
+        size: A4;
+        margin: 15mm;
+    }
+
+    body {
+        background: white !important;
+        margin: 0 !important;
+    }
+
+    .menu-lateral,
+    .topo,
+    .rodape,
+    .rodape-menu,
+    #btnImprimirRelatorio {
+        display: none !important;
+    }
+
+    .sistema,
+    .conteudo,
+    main {
+        display: block !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: visible !important;
+    }
+
+    main > :not(#relatorios) {
+        display: none !important;
+    }
+
+    #relatorios {
+        display: block !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+        border: none !important;
+        background: white !important;
+    }
+
+    #resumoRelatorios p {
+        break-inside: avoid;
+    }
+}
+
+
